@@ -1,55 +1,95 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+==================
+Version change: N/A → 1.0.0 (initial creation)
+Modified principles: None (all new)
+Added sections: 6 principles, 3 main sections, Governance
+Removed sections: None
+Templates requiring updates: ✅ All templates align with constitution
+Follow-up TODOs: None
+-->
+
+# Evolution of Todo Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Spec-First Development (NON-NEGOTIABLE)
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+Every feature MUST begin with an approved specification. NO code may be written without:
+- A complete feature spec in Markdown (`specs/<feature>/spec.md`)
+- An implementation plan (`specs/<feature>/plan.md`)
+- A task breakdown (`specs/<feature>/tasks.md`)
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+All output MUST be traceable to a spec requirement. "Vibe-coding" is prohibited.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### II. Iterative Refinement
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+Specifications evolve through explicit refinement commands only:
+- `/sp.refine` for spec modifications
+- `/sp.plan` for architectural updates
+- `/sp.tasks` for task adjustments
 
-### [PRINCIPLE_6_NAME]
+Implicit changes during implementation are not permitted. Any deviation requires a new refinement command.
 
+### III. Clean Code
 
-[PRINCIPLE__DESCRIPTION]
+All code MUST adhere to quality standards:
+- **Python**: PEP 8 compliance
+- **Meaningful naming**: Variables, functions, and classes clearly convey intent
+- **Error handling**: Graceful degradation with informative messages
+- **Comments**: Explain WHY, not WHAT; document non-obvious logic
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### IV. Testing Discipline
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+Every feature MUST include verification:
+- Unit tests for core logic
+- Integration tests for feature workflows
+- Console verification for CLI-only applications
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+Tests MUST be written before implementation (Red-Green-Refactor).
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### V. Phase Isolation
+
+Each phase of the "Evolution of Todo" project is self-contained:
+- Fresh repository/folder structure per phase
+- Learnings propagate via Constitution updates
+- Dependencies only added when phase requires them
+- No backward compatibility requirements between phases
+
+### VI. Output Format
+
+All documentation MUST use Markdown:
+- Specifications: `specs/<feature>/spec.md`
+- Plans: `specs/<feature>/plan.md`
+- Tasks: `specs/<feature>/tasks.md`
+- Code: Proper syntax highlighting in fenced blocks
+
+## Tech Stack Constraints
+
+Phase 1 technology choices (subsequent phases may deviate):
+- **Language**: Python 3.x
+- **Storage**: In-memory list of dictionaries (no persistence)
+- **Interface**: Console/CLI only
+- **Dependencies**: Standard library only (no external packages)
+
+Libraries MAY be added in later phases when explicitly required by feature specifications.
+
+## SDD Workflow (Strictly Enforced)
+
+1. **/sp.specify** — Generate feature spec with: overview, requirements, data models, edge cases, acceptance criteria, UI/UX notes
+2. **/sp.plan** — Create technical architecture: tech choices, file structure, dependencies, interfaces
+3. **/sp.tasks** — Break plan into testable tasks (each < 200 LOC, single file ideally)
+4. **/sp.implement** — Generate code task-by-task; run tests after each; seek approval before continuing
+5. **/sp.analyze** — Review all artifacts for constitution consistency
+6. **/sp.refine** — Iterate on artifacts based on feedback
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This Constitution supersedes all other development practices. Amendments require:
+1. Documentation of proposed change
+2. Review and approval
+3. Migration plan for affected artifacts
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+All PRs and reviews MUST verify compliance with these principles. Complexity MUST be justified.
+
+**Version**: 1.0.0 | **Ratified**: 2025-12-28 | **Last Amended**: 2025-12-28
