@@ -4,8 +4,8 @@ FROM python:3.10-slim-buster
 # Set the working directory in the container
 WORKDIR /app
 
-# Add the app directory to the PYTHONPATH
-ENV PYTHONPATH="/app"
+# Add the app and src directories to the PYTHONPATH
+ENV PYTHONPATH="/app:/app/src"
 
 # Copy the current directory contents into the container at /app
 COPY . /app
