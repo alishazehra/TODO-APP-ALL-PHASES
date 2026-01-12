@@ -26,6 +26,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        "https://todos-web-app-alpha.vercel.app",
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         settings.frontend_url,
@@ -41,6 +42,11 @@ app.include_router(todos.router, prefix="/api/v1/todos", tags=["todos"])
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
+
+@app.get("/api/v1/test")
+async def test_route():
+    return {"message": "API test route is working"}
+
 
 @app.get("/")
 async def root():
