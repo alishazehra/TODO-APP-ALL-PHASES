@@ -9,7 +9,7 @@ import type {
   TodoResponse,
   UserResponse,
   ErrorResponse,
-} from "@/types";
+} from "@/types"
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
 
@@ -59,7 +59,7 @@ class ApiClient {
   // Auth endpoints
   async signup(data: SignupRequest): Promise<AuthResponse> {
     const response: AxiosResponse<AuthResponse> = await this.client.post(
-      "/auth/signup",
+      "/auth/signup-test",
       data
     );
     return response.data;
