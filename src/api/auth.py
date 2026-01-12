@@ -17,7 +17,7 @@ router = APIRouter()
 
 
 @router.post(
-    "/signup",
+    "/api/v1/auth/signup",
     response_model=AuthResponse,
     responses={
         409: {"model": ErrorResponse, "description": "Email already registered"},
@@ -27,7 +27,7 @@ router = APIRouter()
     description="Create a new user account with email and password",
 )
 @router.post(
-    "/signup/", # New decorator for trailing slash compatibility
+    "/api/v1/auth/signup/",
     response_model=AuthResponse,
     responses={
         409: {"model": ErrorResponse, "description": "Email already registered"},
@@ -82,7 +82,7 @@ async def signup(
 
 
 @router.post(
-    "/signin",
+    "/api/v1/auth/signin",
     response_model=AuthResponse,
     responses={
         401: {"model": ErrorResponse, "description": "Invalid credentials"},
@@ -125,7 +125,7 @@ async def signin(
 
 
 @router.post(
-    "/signout",
+    "/api/v1/auth/signout",
     summary="Sign out a user",
     description="End the current user session",
     responses={
@@ -140,7 +140,7 @@ async def signout(response: Response):
 
 
 @router.get(
-    "/me",
+    "/api/v1/auth/me",
     response_model=UserResponse,
     responses={
         401: {"model": ErrorResponse, "description": "Not authenticated"},

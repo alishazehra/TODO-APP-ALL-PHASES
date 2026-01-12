@@ -14,7 +14,7 @@ router = APIRouter()
 
 
 @router.get(
-    "",
+    "/api/v1/todos",
     response_model=TodoListResponse,
     summary="List all todos",
     description="Retrieve all todos for the authenticated user",
@@ -41,7 +41,7 @@ async def list_todos(
 
 
 @router.post(
-    "",
+    "/api/v1/todos",
     response_model=None,
     responses={
         422: {"description": "Validation error"},
@@ -68,7 +68,7 @@ async def create_todo(
 
 
 @router.get(
-    "/{todo_id}",
+    "/api/v1/todos/{todo_id}",
     response_model=TodoResponse,
     responses={
         404: {"description": "Todo not found"},
@@ -99,7 +99,7 @@ async def get_todo(
 
 
 @router.put(
-    "/{todo_id}",
+    "/api/v1/todos/{todo_id}",
     response_model=TodoResponse,
     responses={
         404: {"description": "Todo not found"},
@@ -132,7 +132,7 @@ async def update_todo(
 
 
 @router.delete(
-    "/{todo_id}",
+    "/api/v1/todos/{todo_id}",
     status_code=status.HTTP_204_NO_CONTENT,
     responses={
         404: {"description": "Todo not found"},
@@ -151,7 +151,7 @@ async def delete_todo(
 
 
 @router.patch(
-    "/{todo_id}/toggle",
+    "/api/v1/todos/{todo_id}/toggle",
     response_model=TodoResponse,
     responses={
         404: {"description": "Todo not found"},
