@@ -1,0 +1,33 @@
+name: Kubernetes Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Kubectl
+      uses: azure/setup-kubectl@v3
+
+    - name: Load Kube Config
+      run: |
+        mkdir -p ~/.kube
+        echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config
+
+    - name: Apply Kubernetes Manifests
+      run: |
+        kubectl apply -f k8s/deployment.yaml
+        kubectl apply -f k8s/service.yaml
+        kubectl apply -f k8s/ingress.yaml
+
+    - name: Verify Pods
+      run: |
+        kubectl get pods
+        kubectl get svc
+        kubectl get ingress
